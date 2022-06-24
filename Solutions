@@ -1,0 +1,94 @@
+Public class Solutions{
+
+    //How do you find the largest and smallest number in an unsorted integer array?
+      public void smallAndLargeNo(int[] input) {
+
+        int smallNo = input[0];
+        int largeNo = input[0];
+
+        for (int i = 1; i < input.length; i++) {
+         if (input[i] > largeNo)
+          largeNo = input[i];
+         else if (input[i] < smallNo)
+          smallNo = input[i];
+        }
+
+        System.out.println("Largest Number is : " + largeNo);
+        System.out.println("Smallest Number is : " + smallNo);
+     }
+     
+     
+     //How do you remove duplicates from an array in place?
+     public int removeDuplicates(int arr[]){  
+        int n = arr.length;
+        if (n==0 || n==1){  
+            return n;  
+        }  
+        int[] temp = new int[n];  
+        int j = 0;  
+        for (int i=0; i<n-1; i++){  
+            if (arr[i] != arr[i+1]){  
+                temp[j++] = arr[i];  
+            }  
+         }  
+        temp[j++] = arr[n-1];     
+        for (int i=0; i<j; i++){  
+            arr[i] = temp[i];  
+        }  
+        return j;  
+    }  
+    
+    //How to find common elements in three sorted array?
+    
+    public void findCommonElements(int ar1[], int ar2[], int ar3[])
+    {
+        int i = 0, j = 0, k = 0;
+ 
+        while (i < ar1.length && j < ar2.length
+               && k < ar3.length) {
+            if (ar1[i] == ar2[j] && ar2[j] == ar3[k]) {
+                System.out.print(ar1[i] + " ");
+                i++;
+                j++;
+                k++;
+            }
+            else if (ar1[i] < ar2[j])
+                i++;
+            else if (ar2[j] < ar3[k])
+                j++;
+            else
+                k++;
+        }
+    }
+    
+    //How to find if there is a subarray with sum equal to zero?
+    public boolean subArrayExists(int arr[])
+    {
+        Set<Integer> hs = new HashSet<Integer>();
+ 
+        int sum = 0;
+ 
+        for (int i = 0; i < arr.length; i++)
+        {
+            sum += arr[i];
+            if (arr[i] == 0 || sum == 0 || hs.contains(sum))
+               return true;
+            hs.add(sum);
+        }
+        return false;
+    }
+    
+    //How to reverse array in place in Java
+    public int[] reverse(int a[])
+    {
+        int i, k, t;
+        int n = a.length;
+        for (i = 0; i < n / 2; i++) {
+            t = a[i];
+            a[i] = a[n - i - 1];
+            a[n - i - 1] = t;
+        }
+        return a;
+    }
+
+}
